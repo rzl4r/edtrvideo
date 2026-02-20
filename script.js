@@ -27,26 +27,29 @@
   }
 
   // Video modal
-  var modal = document.getElementById('video-modal');
-  var iframe = document.getElementById('modal-iframe');
-  var backdrop = modal && modal.querySelector('.modal-backdrop');
-  var closeBtn = modal && modal.querySelector('.modal-close');
+ // Video modal (MP4 version)
+var modal = document.getElementById('video-modal');
+var video = document.getElementById('modal-video');
+var backdrop = modal && modal.querySelector('.modal-backdrop');
+var closeBtn = modal && modal.querySelector('.modal-close');
 
-  function openModal(src) {
-    if (!modal || !iframe) return;
-    iframe.src = src;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
+function openModal(src) {
+  if (!modal || !video) return;
+  video.src = src;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  video.play();
+}
 
-  function closeModal() {
-    if (!modal || !iframe) return;
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    iframe.src = '';
-    document.body.style.overflow = '';
-  }
+function closeModal() {
+  if (!modal || !video) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  video.pause();
+  video.src = '';
+  document.body.style.overflow = '';
+}
 
   document.querySelectorAll('.reel-card').forEach(function (card) {
     var src = card.getAttribute('data-video');

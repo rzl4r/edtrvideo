@@ -826,7 +826,10 @@ main {
   position: absolute;
   inset: 0;
 }
-.modal-video-wrap iframe {
+.modal-video-wrap video {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  display: block;
+  background: black;
 }

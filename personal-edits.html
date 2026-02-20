@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Edits — Mohammed Razal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Mohammed<span>Razal</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="index.html#work">Work</a>
+          <ul class="nav-dropdown">
+            <li><a href="personal-edits.html" class="nav-current">Personal edits</a></li>
+            <li><a href="brand-work.html">Brand work</a></li>
+            <li><a href="wedding-reels.html">Wedding</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html" class="page-back" aria-label="Back to home">← Back</a>
+        <h1 class="page-hero-title">Personal <span>Edits</span></h1>
+        <p class="page-hero-desc">Side projects, travel cuts, and experiments.</p>
+      </div>
+    </section>
+
+    <section class="work">
+      <div class="container">
+        <div class="reel-grid">
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Personal edit 1">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Travel — City Trip</h3>
+              <p>Edit · Color</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Personal edit 2">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Day in the Life</h3>
+              <p>Edit · Sound Design</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=800&q=80" alt="Personal edit 3">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Experimental — Short</h3>
+              <p>Edit · Motion · Grade</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80" alt="Personal edit 4">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Music Edit — Track Name</h3>
+              <p>Edit · Color</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Mohammed Razal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="video-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-video-wrap">
+        <iframe id="modal-iframe" src="" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

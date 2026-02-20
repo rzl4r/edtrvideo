@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Reels — Mohammed Razal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">Mohammed<span>Razal</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-item-dropdown">
+          <a href="index.html#work">Work</a>
+          <ul class="nav-dropdown">
+            <li><a href="personal-edits.html">Personal edits</a></li>
+            <li><a href="brand-work.html">Brand work</a></li>
+            <li><a href="wedding-reels.html" class="nav-current">Wedding</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html" class="page-back" aria-label="Back to home">← Back</a>
+        <h1 class="page-hero-title">Wedding <span>Reels</span></h1>
+        <p class="page-hero-desc">Highlight reels and films from weddings I’ve edited.</p>
+      </div>
+    </section>
+
+    <section class="work">
+      <div class="container">
+        <div class="reel-grid">
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Wedding reel 1">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Sarah & James — Summer Wedding</h3>
+              <p>Edit · Color · Sound</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80" alt="Wedding reel 2">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Priya & Alex — Beach Ceremony</h3>
+              <p>Edit · Color · Motion</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80" alt="Wedding reel 3">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Maria & David — Garden Wedding</h3>
+              <p>Edit · Color · Grade</p>
+            </div>
+          </article>
+          <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="reel-thumb">
+              <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="Wedding reel 4">
+              <div class="reel-play"></div>
+            </div>
+            <div class="reel-info">
+              <h3>Emma & Ryan — Destination Wedding</h3>
+              <p>Edit · Color · Sound Design</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Mohammed Razal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="video-modal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-video-wrap">
+        <iframe id="modal-iframe" src="" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

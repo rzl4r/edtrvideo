@@ -101,12 +101,49 @@
           duration: 0.8,
           ease: 'power3.out'
         }, "-=0.6")
+        .from('.video-ui-overlay', {
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.inOut'
+        }, "-=0.4")
         .from('.hero-scroll', {
           y: -20,
           opacity: 0,
           duration: 0.8,
           ease: 'power3.out'
         }, "-=0.4");
+
+      // Dynamic Timecode Animation
+      var timecodeEl = document.querySelector('.timecode');
+      if (timecodeEl) {
+        var frames = 0;
+        var seconds = 0;
+        var minutes = 0;
+        var hours = 0;
+
+        setInterval(function () {
+          frames += 1;
+          if (frames >= 24) {
+            frames = 0;
+            seconds += 1;
+          }
+          if (seconds >= 60) {
+            seconds = 0;
+            minutes += 1;
+          }
+          if (minutes >= 60) {
+            minutes = 0;
+            hours += 1;
+          }
+
+          var h = String(hours).padStart(2, '0');
+          var m = String(minutes).padStart(2, '0');
+          var s = String(seconds).padStart(2, '0');
+          var f = String(frames).padStart(2, '0');
+
+          timecodeEl.textContent = `${h}:${m}:${s}:${f}`;
+        }, 1000 / 24); // Assuming 24fps
+      }
 
       // Parallax effect on Hero Background
       gsap.to('.hero-bg', {
@@ -177,15 +214,15 @@
         scrollTrigger: {
           trigger: '.about-experience',
           start: 'top 95%',
-          onEnter: function() {
+          onEnter: function () {
             gsap.set('.experience-item', { opacity: 1 });
           }
         }
       });
-      
+
       // Fallback: force visible after 2s in case ScrollTrigger never fires
-      setTimeout(function() {
-        document.querySelectorAll('.experience-item').forEach(function(el) {
+      setTimeout(function () {
+        document.querySelectorAll('.experience-item').forEach(function (el) {
           el.style.opacity = '1';
           el.style.transform = 'none';
         });

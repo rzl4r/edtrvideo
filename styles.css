@@ -305,6 +305,45 @@ main {
   }
 }
 
+/* Nav overlay — dark backdrop behind side drawer on mobile */
+#nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 99;
+  backdrop-filter: blur(2px);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Hamburger → X animation */
+@media (max-width: 768px) {
+  .nav-toggle span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+    display: block;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
 /* --- Hero --- */
 .hero {
   min-height: 100vh;
@@ -1537,5 +1576,149 @@ main {
 @media (pointer: coarse) {
   .custom-cursor {
     display: none;
+  }
+}
+
+/* ================================================================
+   MOBILE FIXES — comprehensive pass for smooth mobile experience
+   ================================================================ */
+
+/* Prevent horizontal scroll on all pages */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Hide "Get in Touch" nav button on mobile (hamburger is enough) */
+@media (max-width: 768px) {
+  .nav-actions {
+    display: none;
+  }
+}
+
+/* Fix intro photo column — never overflow on small screens */
+@media (max-width: 700px) {
+  .intro-photo {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* Hero — add extra bottom padding so scroll cue doesn't clip */
+@media (max-width: 768px) {
+  .hero {
+    padding-bottom: calc(var(--space) + 4rem);
+  }
+}
+
+/* Hide scroll cue on very short screens */
+@media (max-height: 600px) {
+  .hero-scroll {
+    display: none;
+  }
+}
+
+/* Video modal — slide up from bottom on mobile, no overflow */
+@media (max-width: 768px) {
+  .modal {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px 12px 0 0;
+    max-height: 60vh;
+  }
+
+  .modal-video-wrap iframe,
+  .modal-video-wrap video {
+    height: 100%;
+  }
+}
+
+/* Category grid — single column on very narrow phones */
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Experience cards — full width on narrow phones */
+@media (max-width: 480px) {
+  .experience-item {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Work CTA — tighter padding on small screens */
+@media (max-width: 480px) {
+  .work-cta {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* Contact email — wrap gracefully on tiny screens */
+@media (max-width: 380px) {
+  .contact-email {
+    font-size: 1.1rem;
+    word-break: break-all;
+  }
+}
+
+/* Bubble + panel — lift above browser bottom bar, full width panel */
+@media (max-width: 768px) {
+  .msg-bubble {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 52px;
+    height: 52px;
+  }
+
+  .msg-panel {
+    bottom: 5rem;
+    right: 1.25rem;
+    width: calc(100vw - 2.5rem);
+    max-height: 85vh;
+  }
+}
+
+/* Minimum 44px tap targets for all interactive links */
+.nav-links>li>a,
+.contact-links a,
+.page-back {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Performance: disable noise overlay on mobile — too heavy for low-end devices */
+@media (max-width: 768px) {
+  body::after {
+    display: none;
+  }
+
+  .header,
+  .msg-bubble,
+  .msg-panel,
+  .modal {
+    will-change: transform;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

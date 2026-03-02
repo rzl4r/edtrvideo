@@ -110,8 +110,51 @@
     </div>
   </div>
 
+  <!-- Floating Message Bubble -->
+  <div id="msg-bubble" class="msg-bubble" aria-label="Send a message" title="Send me a message">
+    <svg class="bubble-icon bubble-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      fill="currentColor">
+      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z" />
+    </svg>
+    <svg class="bubble-icon bubble-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      fill="currentColor" hidden>
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+    </svg>
+    <span class="bubble-ping"></span>
+  </div>
+  <div id="msg-panel" class="msg-panel" aria-hidden="true">
+    <div class="msg-panel-header">
+      <div class="msg-panel-avatar">MR</div>
+      <div>
+        <p class="msg-panel-name">Mohammed Razal</p>
+        <p class="msg-panel-hint">Usually replies within a day</p>
+      </div>
+    </div>
+    <form id="contact-form" class="contact-form" novalidate>
+      <div class="form-group">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" name="from_name" placeholder="e.g. John Doe" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="cf-email">Your Email</label>
+        <input type="email" id="cf-email" name="from_email" placeholder="e.g. john@email.com" required
+          autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+      </div>
+      <button type="submit" id="cf-submit" class="cf-btn">
+        <span class="cf-btn-text">Send Message</span>
+        <span class="cf-btn-loader" hidden>Sending…</span>
+      </button>
+      <p class="cf-status" id="cf-status" aria-live="polite"></p>
+    </form>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 

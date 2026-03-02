@@ -14,15 +14,46 @@
   // Mobile nav toggle
   var toggle = document.querySelector('.nav-toggle');
   var navLinks = document.querySelector('.nav-links');
+
+  // Create a dark overlay for tap-outside-to-close
+  var navOverlay = document.createElement('div');
+  navOverlay.id = 'nav-overlay';
+  document.body.appendChild(navOverlay);
+
+  function openNav() {
+    navLinks.classList.add('open');
+    navOverlay.classList.add('active');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.classList.add('open');
+    // Push a history state so the back button can close the menu
+    history.pushState({ navOpen: true }, '');
+  }
+
+  function closeNav() {
+    navLinks.classList.remove('open');
+    navOverlay.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('open');
+  }
+
   if (toggle && navLinks) {
     toggle.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+      navLinks.classList.contains('open') ? closeNav() : openNav();
     });
+
+    // Close when any nav link is tapped
     navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
-      });
+      link.addEventListener('click', closeNav);
+    });
+
+    // Close when tapping the dark overlay behind the menu
+    navOverlay.addEventListener('click', closeNav);
+
+    // Close when the mobile back button is pressed
+    window.addEventListener('popstate', function (e) {
+      if (navLinks.classList.contains('open')) {
+        closeNav();
+      }
     });
   }
 

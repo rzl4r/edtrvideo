@@ -343,3 +343,142 @@
     }
   });
 })();
+
+// ----------------------------------------------------------------
+// Floating Message Bubble — toggle panel open / close
+// ----------------------------------------------------------------
+(function () {
+  var bubble = document.getElementById('msg-bubble');
+  var panel = document.getElementById('msg-panel');
+  if (!bubble || !panel) return;
+
+  var ping = bubble.querySelector('.bubble-ping');
+
+  function openPanel() {
+    panel.classList.add('open');
+    bubble.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    // Stop ping once seen
+    if (ping) ping.style.animation = 'none';
+  }
+
+  function closePanel() {
+    panel.classList.remove('open');
+    bubble.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+
+  bubble.addEventListener('click', function (e) {
+    e.stopPropagation();
+    panel.classList.contains('open') ? closePanel() : openPanel();
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function (e) {
+    if (panel.classList.contains('open') &&
+      !panel.contains(e.target) &&
+      !bubble.contains(e.target)) {
+      closePanel();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+  });
+})();
+
+// ----------------------------------------------------------------
+// SETUP REQUIRED:
+//   1. Sign up free at https://www.emailjs.com
+//   2. Create an Email Service (Gmail works great), note the Service ID
+//   3. Create an Email Template with these variables:
+//        {{from_name}}  {{reply_to}}  {{message}}
+//      Set the "To Email" in the template to rzlnyt6@gmail.com
+//   4. Replace the three placeholder strings below with your real IDs
+// ----------------------------------------------------------------
+(function () {
+  var EMAILJS_PUBLIC_KEY = 'i3x9hweYoV2xLDSeR';   // Account > API Keys
+  var EMAILJS_SERVICE_ID = 'service_bp3gj29';   // Email Services
+  var EMAILJS_TEMPLATE_ID = 'template_7ofpzkg';  // Email Templates
+
+  // Initialise EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  var form = document.getElementById('contact-form');
+  var submitBtn = document.getElementById('cf-submit');
+  var statusEl = document.getElementById('cf-status');
+  var btnText = submitBtn && submitBtn.querySelector('.cf-btn-text');
+  var btnLoader = submitBtn && submitBtn.querySelector('.cf-btn-loader');
+
+  if (!form) return;
+
+  function setStatus(msg, type) {
+    statusEl.textContent = msg;
+    statusEl.className = 'cf-status ' + (type || '');
+  }
+
+  function setLoading(loading) {
+    submitBtn.disabled = loading;
+    if (btnText) btnText.hidden = loading;
+    if (btnLoader) btnLoader.hidden = !loading;
+  }
+
+  function validateField(field) {
+    var ok = field.checkValidity() && field.value.trim() !== '';
+    field.classList.toggle('invalid', !ok);
+    return ok;
+  }
+
+  // Live validation feedback
+  form.querySelectorAll('input, textarea').forEach(function (field) {
+    field.addEventListener('blur', function () { validateField(field); });
+    field.addEventListener('input', function () {
+      if (field.classList.contains('invalid')) validateField(field);
+    });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Validate all fields
+    var fields = Array.from(form.querySelectorAll('input[required], textarea[required]'));
+    var valid = fields.every(validateField);
+    if (!valid) {
+      setStatus('Please fill in all fields correctly.', 'error');
+      return;
+    }
+
+    if (typeof emailjs === 'undefined') {
+      setStatus('Messaging service is not loaded. Please refresh and try again.', 'error');
+      return;
+    }
+
+    setLoading(true);
+    setStatus('');
+
+    // Explicitly read each field value so template variables are always populated
+    var templateParams = {
+      from_name: document.getElementById('cf-name').value.trim(),
+      from_email: document.getElementById('cf-email').value.trim(),
+      message: document.getElementById('cf-message').value.trim()
+    };
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      .then(function () {
+        setLoading(false);
+        setStatus('✓ Message sent! I\'ll get back to you soon.', 'success');
+        form.reset();
+        form.querySelectorAll('.invalid').forEach(function (el) {
+          el.classList.remove('invalid');
+        });
+      })
+      .catch(function (err) {
+        setLoading(false);
+        console.error('EmailJS error:', err);
+        setStatus('Something went wrong. Please email me directly at rzlnyt6@gmail.com', 'error');
+      });
+  });
+})();

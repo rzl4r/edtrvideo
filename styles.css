@@ -241,6 +241,12 @@ body::after{
 .photo-title{font-family:var(--font-display);font-weight:600;font-size:.85rem;color:#fff}
 .photo-cat{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);opacity:.85;white-space:nowrap}
 
+.photo-item--ph{cursor:default;aspect-ratio:3/4}
+.photo-item--ph.is-wide{aspect-ratio:4/3}
+.photo-item--ph.is-square{aspect-ratio:1/1}
+.photo-item--ph img{width:100%;height:100%;object-fit:cover}
+.photo-item--ph:hover img{transform:none}
+
 .gallery-more{
   display:flex;justify-content:center;align-items:center;gap:.5rem;
   padding:clamp(1.5rem,4vw,3rem) 0;

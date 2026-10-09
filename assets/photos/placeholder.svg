@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <rect width="800" height="1000" fill="#161616"/>
+  <rect x="40" y="40" width="720" height="920" fill="none" stroke="#2a2a2a" stroke-width="2" stroke-dasharray="12 12"/>
+  <g transform="translate(340,430)" fill="none" stroke="#4a4a48" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="0" y="18" width="120" height="94" rx="10"/>
+    <circle cx="60" cy="65" r="26"/>
+    <path d="M34 18 L46 -6 L74 -6 L86 18"/>
+  </g>
+  <text x="400" y="610" text-anchor="middle" font-family="'DM Sans',Arial,sans-serif" font-size="30" letter-spacing="8" fill="#4a4a48">YOUR PHOTO</text>
+</svg>

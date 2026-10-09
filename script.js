@@ -1,515 +1,213 @@
 (function () {
   'use strict';
 
-  // Header scroll state
-  var header = document.querySelector('.header');
+  /* ---- Header ---- */
+  var header = document.querySelector('.site-header');
   if (header) {
-    function onScroll() {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-    }
+    var onScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
 
-  // Mobile nav toggle
+  /* ---- Mobile nav ---- */
   var toggle = document.querySelector('.nav-toggle');
-  var navLinks = document.querySelector('.nav-links');
-
-  // Create a dark overlay for tap-outside-to-close
-  var navOverlay = document.createElement('div');
-  navOverlay.id = 'nav-overlay';
-  document.body.appendChild(navOverlay);
+  var menu = document.querySelector('.nav-menu');
+  var overlay = document.createElement('div');
+  overlay.id = 'nav-overlay';
+  document.body.appendChild(overlay);
 
   function openNav() {
-    navLinks.classList.add('open');
-    navOverlay.classList.add('active');
-    toggle.setAttribute('aria-expanded', 'true');
+    menu.classList.add('open');
+    overlay.classList.add('active');
     toggle.classList.add('open');
-    // Push a history state so the back button can close the menu
-    history.pushState({ navOpen: true }, '');
   }
-
   function closeNav() {
-    navLinks.classList.remove('open');
-    navOverlay.classList.remove('active');
-    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('open');
+    overlay.classList.remove('active');
     toggle.classList.remove('open');
   }
 
-  if (toggle && navLinks) {
+  if (toggle && menu) {
     toggle.addEventListener('click', function () {
-      navLinks.classList.contains('open') ? closeNav() : openNav();
+      menu.classList.contains('open') ? closeNav() : openNav();
     });
-
-    // Close when any nav link is tapped
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeNav);
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeNav);
     });
-
-    // Close when tapping the dark overlay behind the menu
-    navOverlay.addEventListener('click', closeNav);
-
-    // Close when the mobile back button is pressed
-    window.addEventListener('popstate', function (e) {
-      if (navLinks.classList.contains('open')) {
-        closeNav();
-      }
+    overlay.addEventListener('click', closeNav);
+    window.addEventListener('popstate', function () {
+      if (menu.classList.contains('open')) closeNav();
     });
   }
 
-  // Video modal
-  // Video modal (MP4 version)
+  /* ---- Video modal ---- */
   var modal = document.getElementById('video-modal');
-  var video = document.getElementById('modal-video');
+  var vid = document.getElementById('modal-video');
   var backdrop = modal && modal.querySelector('.modal-backdrop');
   var closeBtn = modal && modal.querySelector('.modal-close');
 
   function openModal(src) {
-    if (!modal || !video) return;
-    video.src = src;
+    if (!modal || !vid) return;
+    vid.src = src;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    video.play();
+    vid.play();
   }
-
   function closeModal() {
-    if (!modal || !video) return;
+    if (!modal || !vid) return;
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
-    video.pause();
-    video.src = '';
+    vid.pause();
+    vid.src = '';
     document.body.style.overflow = '';
   }
 
   document.querySelectorAll('.reel-card').forEach(function (card) {
     var src = card.getAttribute('data-video');
-    if (src) {
-      card.addEventListener('click', function () {
-        openModal(src);
-      });
-    }
+    if (src) card.addEventListener('click', function () { openModal(src); });
   });
-
   if (backdrop) backdrop.addEventListener('click', closeModal);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
-      closeModal();
-    }
+    if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeModal();
   });
 
-  // Footer year
+  /* ---- Footer year ---- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // --- GSAP Animations ---
+  /* ---- GSAP ---- */
   window.addEventListener('load', function () {
-    if (typeof gsap !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
 
-      // Initial Hero Animation
-      var heroTl = gsap.timeline();
+    // Hero
+    var heroTl = gsap.timeline();
+    heroTl
+      .from('.masthead-grid img', { scale: 1.15, opacity: 0, duration: 1.1, stagger: .06, ease: 'power3.out' })
+      .from('.masthead-name', { y: 24, opacity: 0, duration: .8, ease: 'power3.out' }, '-=.55')
+      .from('.masthead-role', { y: 12, opacity: 0, duration: .6, ease: 'power3.out' }, '-=.45')
+      .from('.masthead-scroll', { opacity: 0, duration: .5, ease: 'power2.out' }, '-=.3');
 
-      heroTl.from('.hero-label', {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        delay: 0.2
-      })
-        .from('.hero-title', {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power4.out',
-          stagger: 0.2
-        }, "-=0.6")
-        .from('.hero-desc', {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out'
-        }, "-=0.6")
-        .from('.video-ui-overlay', {
-          opacity: 0,
-          duration: 1.5,
-          ease: 'power2.inOut'
-        }, "-=0.4")
-        .from('.hero-scroll', {
-          y: -20,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out'
-        }, "-=0.4");
+    // Work cards
+    gsap.from('.showcase-card', {
+      y: 40, opacity: 0, duration: .7, stagger: .12, ease: 'power3.out',
+      scrollTrigger: { trigger: '.work-showcase', start: 'top 80%' }
+    });
+    gsap.from('.work-count', {
+      opacity: 0, duration: .5, ease: 'power2.out',
+      scrollTrigger: { trigger: '.work-header', start: 'top 85%' }
+    });
 
-      // Dynamic Timecode Animation
-      var timecodeEl = document.querySelector('.timecode');
-      if (timecodeEl) {
-        var frames = 0;
-        var seconds = 0;
-        var minutes = 0;
-        var hours = 0;
+    // Services
+    gsap.from('.service-item', {
+      y: 24, opacity: 0, duration: .6, stagger: .1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.services-list', start: 'top 82%' }
+    });
 
-        setInterval(function () {
-          frames += 1;
-          if (frames >= 24) {
-            frames = 0;
-            seconds += 1;
-          }
-          if (seconds >= 60) {
-            seconds = 0;
-            minutes += 1;
-          }
-          if (minutes >= 60) {
-            minutes = 0;
-            hours += 1;
-          }
+    // Photography gallery
+    gsap.from('.photo-item', {
+      y: 40, opacity: 0, duration: .7, stagger: .06, ease: 'power3.out',
+      scrollTrigger: { trigger: '.gallery-grid', start: 'top 85%' }
+    });
 
-          var h = String(hours).padStart(2, '0');
-          var m = String(minutes).padStart(2, '0');
-          var s = String(seconds).padStart(2, '0');
-          var f = String(frames).padStart(2, '0');
+    // About
+    gsap.from('.about-statement', {
+      y: 25, opacity: 0, duration: .7, ease: 'power3.out',
+      scrollTrigger: { trigger: '.about-right', start: 'top 80%' }
+    });
+    gsap.from('.about-text', {
+      y: 20, opacity: 0, duration: .6, ease: 'power3.out',
+      scrollTrigger: { trigger: '.about-text', start: 'top 85%' }
+    });
+    gsap.from('.about-tools span', {
+      y: 10, opacity: 0, duration: .35, stagger: .05, ease: 'power2.out',
+      scrollTrigger: { trigger: '.about-tools', start: 'top 90%' }
+    });
 
-          timecodeEl.textContent = `${h}:${m}:${s}:${f}`;
-        }, 1000 / 24); // Assuming 24fps
-      }
+    // Contact
+    gsap.from('.contact-heading', {
+      y: 30, opacity: 0, duration: .8, ease: 'power3.out',
+      scrollTrigger: { trigger: '.contact', start: 'top 80%' }
+    });
 
-      // Parallax effect on Hero Background
-      gsap.to('.hero-bg', {
-        yPercent: 30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-
-      // Intro Section Animation
-      gsap.from('.intro-photo', {
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.intro',
-          start: 'top 80%',
-        }
-      });
-
-      gsap.from('.intro-text', {
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.intro',
-          start: 'top 80%',
-        }
-      });
-
-      gsap.from('.tool-tag', {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: '.intro-tools',
-          start: 'top 85%',
-        }
-      });
-
-      // About Section Animation
-      gsap.from('.section-title', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.about',
-          start: 'top 85%',
-        }
-      });
-
-      gsap.from('.experience-item', {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.about-experience',
-          start: 'top 95%',
-          onEnter: function () {
-            gsap.set('.experience-item', { opacity: 1 });
-          }
-        }
-      });
-
-      // Fallback: force visible after 2s in case ScrollTrigger never fires
-      setTimeout(function () {
-        document.querySelectorAll('.experience-item').forEach(function (el) {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        });
-      }, 2000);
-
-      // Work / Category Cards Animation
-      gsap.from('.category-card', {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.category-grid',
-          start: 'top 80%',
-        }
-      });
-
-      // Work CTA Animation
-      if (document.querySelector('.work-cta')) {
-        gsap.from('.work-cta', {
-          scale: 0.95,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.work-cta',
-            start: 'top 85%',
-          }
-        });
-      }
-
-      // Inner Pages Hero Animation
-      if (document.querySelector('.page-hero')) {
-        var pageHeroTl = gsap.timeline();
-
-        pageHeroTl.from('.page-back', {
-          x: -20,
-          opacity: 0,
-          duration: 0.6,
-          ease: 'power3.out',
-          delay: 0.2
-        })
-          .from('.page-hero-title', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power4.out'
-          }, "-=0.4")
-          .from('.page-hero-desc', {
-            y: 20,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out'
-          }, "-=0.6");
-      }
-
-      // Inner Pages Reel Cards Animation
-      if (document.querySelector('.reel-grid')) {
-        gsap.from('.reel-card', {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.reel-grid',
-            start: 'top 80%',
-          }
-        });
-      }
-
-      // Header Blur Effect on Scroll
-      gsap.to('.header', {
-        backgroundColor: 'rgba(12, 12, 12, 0.9)',
-        backdropFilter: 'blur(12px)',
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: 'body',
-          start: '50px top',
-          toggleActions: 'play none none reverse'
-        }
-      });
-      // --- Custom Cursor ---
-      var cursor = document.createElement('div');
-      cursor.classList.add('custom-cursor');
-      document.body.appendChild(cursor);
-
-      // Position cursor
-      var cursorVisible = false;
-      document.addEventListener('mousemove', function (e) {
-        if (!cursorVisible) {
-          gsap.to(cursor, { opacity: 1, duration: 0.3 });
-          cursorVisible = true;
-        }
-        gsap.to(cursor, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.1,
-          ease: 'power2.out'
-        });
-      });
-
-      // Cursor hover effects on links, buttons and cards
-      var hoverElements = document.querySelectorAll('a, button, .category-card, .reel-card');
-      hoverElements.forEach(function (el) {
-        el.addEventListener('mouseenter', function () {
-          cursor.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', function () {
-          cursor.classList.add('hover-remove');
-          setTimeout(() => {
-            cursor.classList.remove('hover');
-            cursor.classList.remove('hover-remove');
-          }, 150); // wait for removal animation
-        });
+    // Inner pages
+    var ph = document.querySelector('.page-header');
+    if (ph) {
+      gsap.timeline()
+        .from('.page-back', { x: -10, opacity: 0, duration: .4, ease: 'power3.out', delay: .1 })
+        .from('.page-title', { y: 25, opacity: 0, duration: .6, ease: 'power3.out' }, '-=.2')
+        .from('.page-desc', { y: 12, opacity: 0, duration: .5, ease: 'power3.out' }, '-=.3');
+    }
+    var rg = document.querySelector('.reel-grid');
+    if (rg) {
+      gsap.from('.reel-card', {
+        y: 40, opacity: 0, duration: .7, stagger: .1, ease: 'power3.out',
+        scrollTrigger: { trigger: rg, start: 'top 80%' }
       });
     }
   });
 })();
 
-// ----------------------------------------------------------------
-// Floating Message Bubble — toggle panel open / close
-// ----------------------------------------------------------------
+/* ---- Message bubble ---- */
 (function () {
   var bubble = document.getElementById('msg-bubble');
   var panel = document.getElementById('msg-panel');
   if (!bubble || !panel) return;
 
-  var ping = bubble.querySelector('.bubble-ping');
+  function open() { panel.classList.add('open'); bubble.classList.add('open'); panel.setAttribute('aria-hidden', 'false'); }
+  function close() { panel.classList.remove('open'); bubble.classList.remove('open'); panel.setAttribute('aria-hidden', 'true'); }
 
-  function openPanel() {
-    panel.classList.add('open');
-    bubble.classList.add('open');
-    panel.setAttribute('aria-hidden', 'false');
-    // Stop ping once seen
-    if (ping) ping.style.animation = 'none';
-  }
-
-  function closePanel() {
-    panel.classList.remove('open');
-    bubble.classList.remove('open');
-    panel.setAttribute('aria-hidden', 'true');
-  }
-
-  bubble.addEventListener('click', function (e) {
-    e.stopPropagation();
-    panel.classList.contains('open') ? closePanel() : openPanel();
-  });
-
-  // Close when clicking outside
+  bubble.addEventListener('click', function (e) { e.stopPropagation(); panel.classList.contains('open') ? close() : open(); });
   document.addEventListener('click', function (e) {
-    if (panel.classList.contains('open') &&
-      !panel.contains(e.target) &&
-      !bubble.contains(e.target)) {
-      closePanel();
-    }
+    if (panel.classList.contains('open') && !panel.contains(e.target) && !bubble.contains(e.target)) close();
   });
-
-  // Close on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
-  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('open')) close(); });
 })();
 
-// ----------------------------------------------------------------
-// SETUP REQUIRED:
-//   1. Sign up free at https://www.emailjs.com
-//   2. Create an Email Service (Gmail works great), note the Service ID
-//   3. Create an Email Template with these variables:
-//        {{from_name}}  {{reply_to}}  {{message}}
-//      Set the "To Email" in the template to rzlnyt6@gmail.com
-//   4. Replace the three placeholder strings below with your real IDs
-// ----------------------------------------------------------------
+/* ---- EmailJS ---- */
 (function () {
-  var EMAILJS_PUBLIC_KEY = 'i3x9hweYoV2xLDSeR';   // Account > API Keys
-  var EMAILJS_SERVICE_ID = 'service_bp3gj29';   // Email Services
-  var EMAILJS_TEMPLATE_ID = 'template_7ofpzkg';  // Email Templates
+  var PK = 'i3x9hweYoV2xLDSeR';
+  var SID = 'service_bp3gj29';
+  var TID = 'template_7ofpzkg';
 
-  // Initialise EmailJS
-  if (typeof emailjs !== 'undefined') {
-    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-  }
+  if (typeof emailjs !== 'undefined') emailjs.init({ publicKey: PK });
 
   var form = document.getElementById('contact-form');
-  var submitBtn = document.getElementById('cf-submit');
-  var statusEl = document.getElementById('cf-status');
-  var btnText = submitBtn && submitBtn.querySelector('.cf-btn-text');
-  var btnLoader = submitBtn && submitBtn.querySelector('.cf-btn-loader');
-
+  var btn = document.getElementById('cf-submit');
+  var status = document.getElementById('cf-status');
+  var btnTxt = btn && btn.querySelector('.form-submit-text');
+  var btnLoad = btn && btn.querySelector('.form-submit-loading');
   if (!form) return;
 
-  function setStatus(msg, type) {
-    statusEl.textContent = msg;
-    statusEl.className = 'cf-status ' + (type || '');
-  }
+  function setMsg(m, t) { status.textContent = m; status.className = 'form-status ' + (t || ''); }
+  function setLoading(v) { btn.disabled = v; if (btnTxt) btnTxt.hidden = v; if (btnLoad) btnLoad.hidden = !v; }
+  function valid(f) { var ok = f.checkValidity() && f.value.trim() !== ''; f.classList.toggle('invalid', !ok); return ok; }
 
-  function setLoading(loading) {
-    submitBtn.disabled = loading;
-    if (btnText) btnText.hidden = loading;
-    if (btnLoader) btnLoader.hidden = !loading;
-  }
-
-  function validateField(field) {
-    var ok = field.checkValidity() && field.value.trim() !== '';
-    field.classList.toggle('invalid', !ok);
-    return ok;
-  }
-
-  // Live validation feedback
-  form.querySelectorAll('input, textarea').forEach(function (field) {
-    field.addEventListener('blur', function () { validateField(field); });
-    field.addEventListener('input', function () {
-      if (field.classList.contains('invalid')) validateField(field);
-    });
+  form.querySelectorAll('input, textarea').forEach(function (f) {
+    f.addEventListener('blur', function () { valid(f); });
+    f.addEventListener('input', function () { if (f.classList.contains('invalid')) valid(f); });
   });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var fields = Array.from(form.querySelectorAll('[required]'));
+    if (!fields.every(valid)) { setMsg('Please fill in all fields.', 'error'); return; }
+    if (typeof emailjs === 'undefined') { setMsg('Service not loaded. Try refreshing.', 'error'); return; }
 
-    // Validate all fields
-    var fields = Array.from(form.querySelectorAll('input[required], textarea[required]'));
-    var valid = fields.every(validateField);
-    if (!valid) {
-      setStatus('Please fill in all fields correctly.', 'error');
-      return;
-    }
-
-    if (typeof emailjs === 'undefined') {
-      setStatus('Messaging service is not loaded. Please refresh and try again.', 'error');
-      return;
-    }
-
-    setLoading(true);
-    setStatus('');
-
-    // Explicitly read each field value so template variables are always populated
-    var templateParams = {
+    setLoading(true); setMsg('');
+    emailjs.send(SID, TID, {
       from_name: document.getElementById('cf-name').value.trim(),
       from_email: document.getElementById('cf-email').value.trim(),
       message: document.getElementById('cf-message').value.trim()
-    };
-
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-      .then(function () {
-        setLoading(false);
-        setStatus('✓ Message sent! I\'ll get back to you soon.', 'success');
-        form.reset();
-        form.querySelectorAll('.invalid').forEach(function (el) {
-          el.classList.remove('invalid');
-        });
-      })
-      .catch(function (err) {
-        setLoading(false);
-        console.error('EmailJS error:', err);
-        setStatus('Something went wrong. Please email me directly at rzlnyt6@gmail.com', 'error');
-      });
+    }).then(function () {
+      setLoading(false); setMsg('Sent!', 'success'); form.reset();
+      form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    }).catch(function (err) {
+      setLoading(false); console.error(err); setMsg('Failed. Email me directly.', 'error');
+    });
   });
 })();

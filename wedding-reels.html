@@ -1,55 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Reels — Mohammed Razal</title>
+  <title>Wedding Films — Mohammed Razal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <header class="header">
+
+  <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="logo">Mohammed<span>Razal</span></a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li class="nav-item-dropdown">
-          <a href="index.html#work">Work</a>
-          <ul class="nav-dropdown">
-            <li><a href="personal-edits.html">Personal edits</a></li>
-            <li><a href="brand-work.html">Brand work</a></li>
-            <li><a href="wedding-reels.html" class="nav-current">Wedding</a></li>
-          </ul>
-        </li>
+      <a href="index.html" class="nav-logo">MR</a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span></button>
+      <ul class="nav-menu">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#photography">Photography</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-header">
       <div class="container">
-        <a href="index.html" class="page-back" aria-label="Back to home">← Back</a>
-        <h1 class="page-hero-title">Wedding <span>Reels</span></h1>
-        <p class="page-hero-desc">Highlight reels and films from weddings I’ve edited.</p>
+        <a href="index.html" class="page-back">Back</a>
+        <h1 class="page-title">Wedding <span>Films</span></h1>
+        <p class="page-desc">Highlight reels and stories from the day.</p>
       </div>
     </section>
 
-    <section class="work">
+    <section style="padding:0 0 clamp(5rem,12vw,9rem)">
       <div class="container">
+        <div class="page-divider"></div>
         <div class="reel-grid">
           <article class="reel-card" data-video="assets/wdng/mehendi_night.mp4">
             <div class="reel-thumb">
-              <img src="assets/wdng/mh_thumb.jpg">
+              <img src="assets/wdng/mh_thumb.jpg" alt="Mehendi night highlight">
               <div class="reel-play"></div>
             </div>
             <div class="reel-info">
@@ -59,101 +49,60 @@
           </article>
           <article class="reel-card" data-video="assets/wdng/s_wedding.mp4">
             <div class="reel-thumb">
-              <img src="assets/wdng/swed_thumb.jpg" alt="Wedding reel 2">
+              <img src="assets/wdng/swed_thumb.jpg" alt="S and H Wedding">
               <div class="reel-play"></div>
             </div>
             <div class="reel-info">
-              <h3>S & H - Wedding</h3>
-              <p>Edit · Grade </p>
+              <h3>S &amp; H - Wedding</h3>
+              <p>Edit &middot; Grade</p>
             </div>
           </article>
           <article class="reel-card" data-video="assets/wdng/arikuth_f.mp4">
             <div class="reel-thumb">
-              <img src="assets/wdng/arikuth_thumb.jpg" alt="Wedding reel 3">
+              <img src="assets/wdng/arikuth_thumb.jpg" alt="Arikuth Kalyanam">
               <div class="reel-play"></div>
             </div>
             <div class="reel-info">
-              <h3>F — Arikuth Kalyanam</h3>
-              <p>Edit · Color · Grade</p>
+              <h3>F - Arikuth Kalyanam</h3>
+              <p>Edit &middot; Color &middot; Grade</p>
             </div>
           </article>
-          <!-- <article class="reel-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-            <div class="reel-thumb">
-              <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" alt="Wedding reel 4">
-              <div class="reel-play"></div>
-            </div>
-            <div class="reel-info">
-              <h3>Emma & Ryan — Destination Wedding</h3>
-              <p>Edit · Color · Sound Design</p>
-            </div>
-          </article> -->
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Mohammed Razal. All rights reserved.</p>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container"><span>&copy; <span id="year"></span> Mohammed Razal</span></div></footer>
 
   <div class="modal" id="video-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
     <div class="modal-content">
-      <button class="modal-close" aria-label="Close">×</button>
-      <div class="modal-video-wrap">
-        <video id="modal-video" controls></video>
-      </div>
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-video-wrap"><video id="modal-video" controls></video></div>
     </div>
   </div>
 
-  <!-- Floating Message Bubble -->
-  <div id="msg-bubble" class="msg-bubble" aria-label="Send a message" title="Send me a message">
-    <svg class="bubble-icon bubble-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      fill="currentColor">
-      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z" />
-    </svg>
-    <svg class="bubble-icon bubble-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      fill="currentColor" hidden>
-      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-    </svg>
-    <span class="bubble-ping"></span>
+  <div id="msg-bubble" class="msg-bubble" aria-label="Send a message" title="Send a message">
+    <svg class="bubble-icon bubble-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+    <svg class="bubble-icon bubble-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
   </div>
   <div id="msg-panel" class="msg-panel" aria-hidden="true">
     <div class="msg-panel-header">
       <div class="msg-panel-avatar">MR</div>
-      <div>
-        <p class="msg-panel-name">Mohammed Razal</p>
-        <p class="msg-panel-hint">Usually replies within a day</p>
-      </div>
+      <div><p class="msg-panel-name">Mohammed Razal</p><p class="msg-panel-hint">Usually replies within a day</p></div>
     </div>
     <form id="contact-form" class="contact-form" novalidate>
-      <div class="form-group">
-        <label for="cf-name">Your Name</label>
-        <input type="text" id="cf-name" name="from_name" placeholder="e.g. John Doe" required autocomplete="name">
-      </div>
-      <div class="form-group">
-        <label for="cf-email">Your Email</label>
-        <input type="email" id="cf-email" name="from_email" placeholder="e.g. john@email.com" required
-          autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
-      </div>
-      <button type="submit" id="cf-submit" class="cf-btn">
-        <span class="cf-btn-text">Send Message</span>
-        <span class="cf-btn-loader" hidden>Sending…</span>
-      </button>
-      <p class="cf-status" id="cf-status" aria-live="polite"></p>
+      <div class="form-field"><label for="cf-name">Name</label><input type="text" id="cf-name" name="from_name" placeholder="Your name" required autocomplete="name"></div>
+      <div class="form-field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="from_email" placeholder="you@email.com" required autocomplete="email"></div>
+      <div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea></div>
+      <button type="submit" id="cf-submit" class="form-submit"><span class="form-submit-text">Send</span><span class="form-submit-loading" hidden>Sending...</span></button>
+      <p class="form-status" id="cf-status" aria-live="polite"></p>
     </form>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>

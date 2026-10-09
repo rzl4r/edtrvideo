@@ -1,228 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Editor Portfolio</title>
+  <title>Mohammed Razal — Editor &amp; Colorist</title>
+  <meta name="description" content="Video editing, color grading, and motion design for brands and creators.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <header class="header">
+
+  <header class="site-header">
     <nav class="nav">
-      <a href="index.html" class="logo">Mohammed<span>Razal</span></a>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
+      <a href="index.html" class="nav-logo">MR</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
       </button>
-      <ul class="nav-links">
-        <li class="nav-item-dropdown">
-          <a href="#work">Work</a>
-          <ul class="nav-dropdown">
-            <li><a href="personal-edits.html">Personal edits</a></li>
-            <li><a href="wedding-reels.html">Wedding</a></li>
-            <li><a href="brand-work.html">Brand work</a></li>
-          </ul>
-        </li>
+      <ul class="nav-menu">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#photography">Photography</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
-      <div class="nav-actions">
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-bg"></div>
 
-      <!-- Video Editing UI Overlay -->
-      <div class="video-ui-overlay">
-        <div class="rec-indicator">
-          <span class="rec-dot"></span>
-          <span>REC</span>
-        </div>
-        <div class="timecode">00:00:00:00</div>
-        <div class="crosshair center-crosshair"></div>
-        <div class="framing-bracket top-left"></div>
-        <div class="framing-bracket top-right"></div>
-        <div class="framing-bracket bottom-left"></div>
-        <div class="framing-bracket bottom-right"></div>
-        <div class="format-tags">
-          <span>4K</span>
-          <span>RAW</span>
-          <span>LOG</span>
-        </div>
+    <section class="masthead">
+      <div class="masthead-grid" aria-hidden="true">
+        <figure><img src="assets/photos/IMG_2110.JPG" alt="photos" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_2583.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_2681.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_3113.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_4270.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_4569.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_5334.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_5436.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_8185.JPG" alt="" loading="eager"></figure>
+        <figure><img src="assets/photos/IMG_8186.JPG" alt="" loading="eager"></figure>
+        <figure><img src="https://picsum.photos/seed/m11/800/1000" alt="" loading="eager"></figure>
+        <figure><img src="https://picsum.photos/seed/m12/800/850" alt="" loading="eager"></figure>
       </div>
-      <div class="hero-content">
-        <p class="hero-label">Video Editor & Motion Designer</p>
-        <h1 class="hero-title">Every second,<br><em class="hero-title-outline">on purpose</em>.</h1>
-        <p class="hero-desc">Cutting, color, and motion for brands and creators.</p>
-        <div class="hero-stats">
-        </div>
-        <div class="hero-actions">
-        </div>
+      <div class="masthead-veil"></div>
+      <div class="masthead-inner">
+        <h1 class="masthead-name">Mohammed Razal</h1>
+        <p class="masthead-role">Editor &amp; Colorist &mdash; Kerala, India</p>
       </div>
-      <div class="hero-scroll">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
+      <a href="#photography" class="masthead-scroll" aria-label="Scroll to photography">Scroll</a>
+    </section>
+
+    <section id="photography" class="gallery">
+      <div class="gallery-grid">
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g1/800/1000" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Portrait</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g2/800/700" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Landscape</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g3/800/850" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Street</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g4/800/1100" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Architecture</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g5/800/650" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Nature</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g6/800/900" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Detail</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g7/800/780" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Travel</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g8/800/1050" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Portrait</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g9/800/600" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Landscape</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g10/800/950" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Street</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g11/800/820" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Architecture</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g12/800/1000" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Nature</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g13/800/680" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Detail</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g14/800/900" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Travel</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g15/800/760" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Portrait</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g16/800/1080" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Landscape</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g17/800/620" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Street</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g18/800/880" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Architecture</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g19/800/800" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Nature</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g20/800/1020" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Detail</span></figcaption></figure>
+        <figure class="photo-item"><img src="https://picsum.photos/seed/g21/800/720" alt="Photography placeholder" loading="lazy"><figcaption><span class="photo-title">Untitled</span><span class="photo-cat">Travel</span></figcaption></figure>
+      </div>
+      <a href="https://www.instagram.com/raza.aal/" target="_blank" rel="noopener" class="gallery-more">More on Instagram</a>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Editing</span><span class="dot">&bull;</span>
+        <span>Color Grading</span><span class="dot">&bull;</span>
+        <span>Motion Design</span><span class="dot">&bull;</span>
+        <span>Storytelling</span><span class="dot">&bull;</span>
+        <span>Finishing</span><span class="dot">&bull;</span>
+        <span>Delivery</span><span class="dot">&bull;</span>
+        <span>Editing</span><span class="dot">&bull;</span>
+        <span>Color Grading</span><span class="dot">&bull;</span>
+        <span>Motion Design</span><span class="dot">&bull;</span>
+        <span>Storytelling</span><span class="dot">&bull;</span>
+        <span>Finishing</span><span class="dot">&bull;</span>
+        <span>Delivery</span><span class="dot">&bull;</span>
+      </div>
+    </div>
+
+    <section id="projects" class="work">
+      <div class="container">
+        <div class="work-header">
+          <h2 class="work-title">Projects</h2>
+          <span class="work-count">3 projects</span>
+        </div>
+
+        <div class="work-showcase">
+          <a href="personal-edits.html" class="showcase-card showcase-card--hero">
+            <div class="showcase-card-media">
+              <img src="assets/prsnl/mnr_thumb.jpg" alt="Personal edits" loading="lazy">
+            </div>
+            <div class="showcase-card-text">
+              <span class="showcase-card-num">01</span>
+              <h3>Personal Edits</h3>
+              <p>Travel, experiments, and self-initiated projects.</p>
+            </div>
+          </a>
+
+          <div class="work-row">
+            <a href="brand-projects.html" class="showcase-card">
+              <div class="showcase-card-media">
+                <img src="assets/brnd.jpg" alt="Brand projects" loading="lazy">
+              </div>
+              <div class="showcase-card-text">
+                <span class="showcase-card-num">02</span>
+                <h3>Brand Projects</h3>
+                <p>Campaigns, product, and social content.</p>
+              </div>
+            </a>
+
+            <a href="wedding-reels.html" class="showcase-card">
+              <div class="showcase-card-media">
+                <img src="assets/wdng/swed_thumb.jpg" alt="Wedding reels" loading="lazy">
+              </div>
+              <div class="showcase-card-text">
+                <span class="showcase-card-num">03</span>
+                <h3>Wedding Films</h3>
+                <p>Highlights and stories from the day.</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="intro">
-      <div class="container intro-inner">
-        <div class="intro-photo">
-          <img src="assets/pfp.JPG" alt="Video Editor">
+    <section id="services" class="services">
+      <div class="container">
+        <div class="services-header">
+          <h2 class="section-label">Services</h2>
+          <span class="section-count">4 disciplines</span>
         </div>
-        <div class="intro-content">
-          <p class="intro-text">I specialize in transforming raw footage into compelling visual narratives. Whether it's
-            a brand campaign, music video, or wedding highlight, I bring technical precision and creative vision to
-            every project.</p>
-          <p class="intro-text">My workflow combines industry-standard tools with a keen eye for storytelling, ensuring
-            every edit serves the narrative and resonates with the intended audience.</p>
-          <div class="intro-tools">
-            <span class="tool-tag">Premiere Pro</span>
-            <span class="tool-tag">DaVinci Resolve</span>
-            <span class="tool-tag">After Effects</span>
-            <span class="tool-tag">Photoshop</span>
-            <span class="tool-tag">Capcut</span>
-          </div>
-        </div>
+        <ul class="services-list">
+          <li class="service-item">
+            <span class="service-num">01</span>
+            <h3 class="service-name">Editing</h3>
+            <p class="service-desc">Story-first assembly. Rhythm, pacing, and cuts that carry the piece from first frame to last.</p>
+          </li>
+          <li class="service-item">
+            <span class="service-num">02</span>
+            <h3 class="service-name">Color Grading</h3>
+            <p class="service-desc">Mood through color. Balanced, cinematic looks built in DaVinci Resolve to fit each project's tone.</p>
+          </li>
+          <li class="service-item">
+            <span class="service-num">03</span>
+            <h3 class="service-name">Motion Design</h3>
+            <p class="service-desc">Titles, graphics, and animation that support the story without ever shouting over it.</p>
+          </li>
+          <li class="service-item">
+            <span class="service-num">04</span>
+            <h3 class="service-name">Finishing</h3>
+            <p class="service-desc">Sound balance, cleanup, and final delivery, exported clean across every format and platform.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section id="about" class="about">
-      <div class="container about-inner">
-        <div class="about-text">
-          <h2 class="section-title">About <span>Me</span></h2>
-          <p class="about-lead">I’m a video editor and motion designer focused on clear storytelling and a strong look.
-          </p>
-          <p>From commercials to music videos and docs, I handle cutting, color grading, and motion graphics so every
-            frame supports the story. I work in Premiere, DaVinci Resolve, and After Effects.</p>
-          <div class="about-experience">
-            <div class="experience-item">
-              <h4>Technical Expertise</h4>
-              <p>Proficient in Adobe Creative Suite with advanced skills in color theory, audio mixing, and visual
-                effects integration.</p>
-            </div>
-            <div class="experience-item">
-              <h4>Creative Vision</h4>
-              <p>Strong understanding of visual storytelling, pacing, and audience engagement across different content
-                types.</p>
-            </div>
-            <div class="experience-item">
-              <h4>Client Collaboration</h4>
-              <p>Experienced in working directly with clients to understand their vision and deliver projects that
-                exceed expectations.</p>
-            </div>
-          </div>
-          <ul class="about-skills">
-            <li>Editing</li>
-            <li>Color Grading</li>
-            <li>Motion Graphics</li>
-            <li>Sound Design</li>
-          </ul>
-        </div>
-        <!-- <div class="about-visual">
-          <div class="about-frame">
-            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&q=80" alt="Editor at work">
-          </div>
-        </div> -->
-      </div>
-    </section>
-
-    <section id="work" class="work">
       <div class="container">
-        <h2 class="section-title"><span>Work </span>I've Done</h2>
-        <div class="category-grid">
-          <a href="personal-edits.html" class="category-card">
-            <div class="category-card-thumb">
-              <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Personal edits">
+        <div class="about-layout">
+          <div class="about-left">
+            <h2 class="about-heading">About</h2>
+          </div>
+          <div class="about-right">
+            <p class="about-statement">I cut, grade, and finish video so it feels right.</p>
+            <p class="about-text">From commercials to music videos to wedding films, I cut in Premiere, grade in DaVinci Resolve, and build motion in After Effects. Every project gets the same attention: the edit serves the story, the grade sets the mood, the motion supports the pacing.</p>
+            <div class="about-tools">
+              <span>Premiere Pro</span>
+              <span>DaVinci Resolve</span>
+              <span>After Effects</span>
+              <span>Photoshop</span>
+              <span>CapCut</span>
             </div>
-            <div class="category-card-info">
-              <h3>Personal Edits</h3>
-              <p>Side projects, travel cuts & experiments</p>
-            </div>
-          </a>
-          <a href="brand-work.html" class="category-card">
-            <div class="category-card-thumb">
-              <img src="assets/brnd.jpg" alt="brand-work">
-            </div>
-            <div class="category-card-info">
-              <h3>Brand Work</h3>
-              <p>Brand campaigns, music videos, docs & more</p>
-            </div>
-          </a>
-          <a href="wedding-reels.html" class="category-card">
-            <div class="category-card-thumb">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Wedding reels">
-            </div>
-            <div class="category-card-info">
-              <h3>Wedding Reels</h3>
-              <p>Highlight reels and films from weddings</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="work-cta">
-          <h3>Ready to bring your vision to life?</h3>
-          <p>Let's collaborate on your next project.</p>
-          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="section-title">Let's <span>Work</span></h2>
-        <p class="contact-lead">Have a project in mind? Drop a line.</p>
+        <p class="contact-eyebrow">Let's talk</p>
+        <h2 class="contact-heading">Got a project?<br>Let's make it happen.</h2>
         <a href="mailto:rzlnyt6@gmail.com" class="contact-email">rzlnyt6@gmail.com</a>
-        <div class="contact-links">
-          <a href="#" target="_blank" rel="noopener">YouTube</a>
+        <div class="contact-row">
           <a href="https://www.instagram.com/raza.aal/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.linkedin.com/in/rzlrshd/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Mohammed Razal. All rights reserved.</p>
+      <span>&copy; <span id="year"></span> Mohammed Razal</span>
     </div>
   </footer>
 
-  <!-- Video modal -->
   <div class="modal" id="video-modal" aria-hidden="true">
     <div class="modal-backdrop"></div>
     <div class="modal-content">
-      <button class="modal-close" aria-label="Close">×</button>
+      <button class="modal-close" aria-label="Close">&times;</button>
       <div class="modal-video-wrap">
         <video id="modal-video" controls></video>
       </div>
     </div>
   </div>
 
-  <!-- Floating Message Bubble -->
-  <div id="msg-bubble" class="msg-bubble" aria-label="Send a message" title="Send me a message">
-    <svg class="bubble-icon bubble-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      fill="currentColor">
-      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z" />
-    </svg>
-    <svg class="bubble-icon bubble-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      fill="currentColor" hidden>
-      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-    </svg>
-    <span class="bubble-ping"></span>
+  <div id="msg-bubble" class="msg-bubble" aria-label="Send a message" title="Send a message">
+    <svg class="bubble-icon bubble-icon-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+    <svg class="bubble-icon bubble-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
   </div>
 
-  <!-- Floating Form Panel -->
   <div id="msg-panel" class="msg-panel" aria-hidden="true">
     <div class="msg-panel-header">
       <div class="msg-panel-avatar">MR</div>
@@ -232,24 +238,23 @@
       </div>
     </div>
     <form id="contact-form" class="contact-form" novalidate>
-      <div class="form-group">
-        <label for="cf-name">Your Name</label>
-        <input type="text" id="cf-name" name="from_name" placeholder="e.g. John Doe" required autocomplete="name">
+      <div class="form-field">
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="from_name" placeholder="Your name" required autocomplete="name">
       </div>
-      <div class="form-group">
-        <label for="cf-email">Your Email</label>
-        <input type="email" id="cf-email" name="from_email" placeholder="e.g. john@email.com" required
-          autocomplete="email">
+      <div class="form-field">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="from_email" placeholder="you@email.com" required autocomplete="email">
       </div>
-      <div class="form-group">
+      <div class="form-field">
         <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
       </div>
-      <button type="submit" id="cf-submit" class="cf-btn">
-        <span class="cf-btn-text">Send Message</span>
-        <span class="cf-btn-loader" hidden>Sending…</span>
+      <button type="submit" id="cf-submit" class="form-submit">
+        <span class="form-submit-text">Send</span>
+        <span class="form-submit-loading" hidden>Sending...</span>
       </button>
-      <p class="cf-status" id="cf-status" aria-live="polite"></p>
+      <p class="form-status" id="cf-status" aria-live="polite"></p>
     </form>
   </div>
 
@@ -258,5 +263,4 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>
